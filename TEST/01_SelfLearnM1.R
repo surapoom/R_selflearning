@@ -12,25 +12,25 @@ library(h2o)
 library(lubridate)
 library(magrittr)
 #library(plotly)
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/load_data.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/create_labelled_data.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/create_transposed_data.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/self_learn_ai.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/self_learn_ai_R.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/test_model.R")
+source("C:/LazyTrading/GitHub/R_selflearning/load_data.R")
+source("C:/LazyTrading/GitHub/R_selflearning/create_labelled_data.R")
+source("C:/LazyTrading/GitHub/R_selflearning/create_transposed_data.R")
+source("C:/LazyTrading/GitHub/R_selflearning/self_learn_ai.R")
+source("C:/LazyTrading/GitHub/R_selflearning/self_learn_ai_R.R")
+source("C:/LazyTrading/GitHub/R_selflearning/test_model.R")
 
 #absolute path to store model objects (useful when scheduling tasks)
-path_model <- "C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/model"
+path_model <- "C:/LazyTrading/GitHub/R_selflearning/model"
 
 #### Read asset prices and indicators ==========================================
 # load prices of 28 currencies
-prices <- load_data(path_terminal = "C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/",
+prices <- load_data(path_terminal = "C:/Program Files (x86)/ICMarkets MT4 Terminal2/MQL4/Files/",
                     trade_log_file = "AI_CP", 
                     time_period = 1,
                     data_deepth = "50000")
 
 # load macd indicator of 28 currencies
-macd <- load_data(path_terminal = "C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/",
+macd <- load_data(path_terminal = "C:/Program Files (x86)/ICMarkets MT4 Terminal2/MQL4/Files/",
                     trade_log_file = "AI_Macd", 
                     time_period = 1,
                     data_deepth = "50000")
@@ -60,11 +60,11 @@ h2o.shutdown(prompt = F)
 # update trigger in the sandboxes
 # read trigger value to the repository and paste it to the sandboxes
 file.copy(from = file.path(path_model, "LOG", "AI_T-1.csv"), 
-          to = c("C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/AI_T-1.csv",
-                 "C:/Program Files (x86)/FxPro - Terminal1/MQL4/Files/AI_T-1.csv",
-                 "C:/Program Files (x86)/FxPro - Terminal3/MQL4/Files/AI_T-1.csv",
-                 "C:/Program Files (x86)/FxPro - Terminal4/MQL4/Files/AI_T-1.csv",
-                 "C:/Program Files (x86)/FxPro - Terminal5/MQL4/Files/AI_T-1.csv"),
+          to = c("C:/Program Files (x86)/ICMarkets MT4 Terminal2/MQL4/Files/AI_T-1.csv",
+                 "C:/Program Files (x86)/ICMarkets MT4 Terminal1/MQL4/Files/AI_T-1.csv",
+                 "C:/Program Files (x86)/ICMarkets MT4 Terminal3/MQL4/Files/AI_T-1.csv",
+                 "C:/Program Files (x86)/ICMarkets MT4 Terminal4/MQL4/Files/AI_T-1.csv",
+                 "C:/Program Files (x86)/ICMarkets MT4 Terminal5/MQL4/Files/AI_T-1.csv"),
           overwrite = TRUE) 
 
 
