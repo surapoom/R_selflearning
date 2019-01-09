@@ -13,14 +13,14 @@ library(lubridate)
 library(magrittr)
 
 #library(plotly)
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/load_data.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/create_labelled_data.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/create_transposed_data.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/self_learn_ai.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/self_learn_ai_R.R")
-source("C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/test_model.R")
+source("C:/LazyTrading/GitHub/R_selflearning/load_data.R")
+source("C:/LazyTrading/GitHub/R_selflearning/create_labelled_data.R")
+source("C:/LazyTrading/GitHub/R_selflearning/create_transposed_data.R")
+source("C:/LazyTrading/GitHub/R_selflearning/self_learn_ai.R")
+source("C:/LazyTrading/GitHub/R_selflearning/self_learn_ai_R.R")
+source("C:/LazyTrading/GitHub/R_selflearning/test_model.R")
 #absolute path to store model objects (useful when scheduling tasks)
-path_model <- "C:/Users/fxtrams/Documents/000_TradingRepo/R_selflearning/model"
+path_model <- "C:/LazyTrading/GitHub/R_selflearning/model"
 h2o.init()
 
 ### Create For loop to test possible outcomes and test those strategies
@@ -36,13 +36,13 @@ for (AHEAD in options_predict_ahead) {
     if(PERIODS == 1) {file_bars <- "50000"}
     if(PERIODS == 15) {file_bars <-"35000"}
     if(PERIODS == 60) {file_bars <-"12000"}
-    prices <- load_data(path_terminal = "C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/",
+    prices <- load_data(path_terminal = "C:/Program Files (x86)/ICMarkets MT4 Terminal2/MQL4/Files/",
                     trade_log_file = "AI_CP", 
                     time_period = PERIODS,
                     data_deepth = file_bars)
     
     # load macd indicator of 28 currencies
-    macd <- load_data(path_terminal = "C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/",
+    macd <- load_data(path_terminal = "C:/Program Files (x86)/ICMarkets MT4 Terminal2/MQL4/Files/",
                     trade_log_file = "AI_Macd", 
                     time_period = PERIODS,
                     data_deepth = file_bars)

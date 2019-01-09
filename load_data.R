@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples  
-#' prices <- load_data(path_terminal = "C:/Program Files (x86)/FxPro - Terminal2/MQL4/Files/",
+#' prices <- load_data(path_terminal = "C:/Program Files (x86)/ICMarkets MT4 Terminal2/MQL4/Files/",
 #'                     trade_log_file = "AI_CP", 
 #'                     time_period = 1,
 #'                     data_deepth = "14200")
